@@ -1,18 +1,19 @@
-// from data.js
+// From data.js
 var tableData = data;
 
-// select items from html
+// Select items from html
 var tbody = d3.select('tbody');
 var button = d3.select('#filter-btn');
 var form = d3.select('#form');
 
-// add events to filter
+// Add events to filters
 button.on('click', runEnter);
 form.on('submit', runEnter);
 
-// add data to table
+// Add data to table
 __init__();
 
+// Function for complete table
 function __init__() {
     console.log(tableData);
     tableData.forEach((entry) => {
@@ -23,15 +24,16 @@ function __init__() {
     });
 }
 
+// Function 
 function runEnter() {
 
     d3.event.preventDefault();
-    d3.event.stopPropagation();
 
     var input = d3.select('#datetime').property('value');
     console.log(input);
 
     var filteredData = tableData.filter(data => data.datetime === input);
+
     console.log(filteredData);
 
     tbody.html('');
